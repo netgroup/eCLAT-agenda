@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 var { verify } = require("./jobs/verify");
 
 // DB connection
@@ -35,3 +34,7 @@ agenda.define("verify package", verify.packageVerification);
   // IIFE to give access to async/await
   await agenda.start();
 })();
+
+// agenda.define("get package programs", programs.getPrograms);
+// const job = agenda.create("get package programs", package);
+// await job.save();
