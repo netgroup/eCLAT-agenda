@@ -15,7 +15,7 @@ const verify = {
     const release = job.attrs.data;
     const repo = release.packageUrl;
     const folderName = extractGitHubRepoName(repo);
-    const commit = release.commit;
+    const version = release.version;
 
     shell.cd(__dirname + `/PackageToVerify`);
 
@@ -26,7 +26,7 @@ const verify = {
     } else {
       shell.cd(`${folderName}`);
 
-      if (shell.exec(`git checkout ${commit}`).code !== 0) {
+      if (shell.exec(`git checkout ${version}`).code !== 0) {
         updateStatus(release, "error", undefined);
       } else {
         //Call the function to do the verification

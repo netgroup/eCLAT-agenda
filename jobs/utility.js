@@ -69,7 +69,7 @@ async function ls(folderName) {
 
       switch (dirent.name) {
         case "python":
-          directories++;
+          // directories++;
           for await (const file of folder) {
             if (file.name.split(".").pop() !== "py") {
               status = "error";
@@ -77,7 +77,7 @@ async function ls(folderName) {
           }
           break;
         case "scripts":
-          directories++;
+          // directories++;
           for await (const file of folder) {
             if (file.name.split(".").pop() !== "sh") {
               status = "error";
@@ -105,7 +105,7 @@ function updateStatus(release, newStatus, newPrograms) {
       console.log(err);
     } else {
       doc.releases = doc.releases.map((r) => {
-        if (r.commit === release.commit) {
+        if (r.version === release.version) {
           r.status = newStatus;
           return r;
         }
